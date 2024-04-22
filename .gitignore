@@ -1,0 +1,35 @@
+back-board
+
+mzc-backend/.gitt
+mzc-backend/.idea
+mzc-backend/node_modules
+mzc-backend/dist
+
+mzc-backend/package-lock.json
+
+
+# 프론트앤드
+mzc-project/.gitt
+mzc-project/node_modules
+
+# dependencies
+mzc-project/node_modules
+mzc-project/.pnp
+mzc-project/.pnp.js
+
+# testing
+mzc-project/coverage
+
+# production
+mzc-project/build
+
+# misc
+mzc-project/.DS_Store
+mzc-project/.env.local
+mzc-project/.env.development.local
+mzc-project/.env.test.local
+mzc-project/.env.production.local
+
+mzc-project/npm-debug.log*
+mzc-project/yarn-debug.log*
+mzc-project/yarn-error.log*

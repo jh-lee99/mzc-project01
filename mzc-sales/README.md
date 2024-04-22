@@ -11,6 +11,7 @@ db.createCollection('Product');
 
 // 상품 데이터 추가
 db.Product.insertMany([
+
   { name: '축구공', amount: 1000 }, // price를 amount로 수정
   
   { name: '축구유니폼', amount: 5000 }, // price를 amount로 수정

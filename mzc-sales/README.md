@@ -6,10 +6,13 @@ mongoDB에서 상품 정보를 가져와서 결제된 금액과 상품명이 DB�
 mongoDB 데이터 예시:
 
 // init_data.js
+
 // MongoDB 데이터베이스와 컬렉션 생성
+
 db.createCollection('Product');
 
 // 상품 데이터 추가
+
 db.Product.insertMany([
 
   { name: '축구공', amount: 1000 }, // price를 amount로 수정
@@ -17,4 +20,5 @@ db.Product.insertMany([
   { name: '축구유니폼', amount: 5000 }, // price를 amount로 수정
   
   { name: '축구장갑', amount: 3000 } // price를 amount로 수정
+  
 ]);

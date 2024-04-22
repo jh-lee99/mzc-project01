@@ -1,2 +1,2 @@
 # mzc-project01
-# mzc-project01
+메가존 1차 프로젝트 수행한 소스코드입니다.

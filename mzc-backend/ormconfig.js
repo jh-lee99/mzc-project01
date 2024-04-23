@@ -2,21 +2,21 @@ const SnakeNamingStrategy = require("typeorm-naming-strategies").SnakeNamingStra
 
 module.exports = {
   "type": "mysql",
-  "host": "localhost",
-  "port": 3306,
-  "username": "eastflag",
-  "password": "12345678",
-  "database": "eastdb",
+  "host": process.env.DATABASE_HOST,
+  "port": process.env.DATABASE_PORT,
+  "username": process.env.DATABASE_USER,
+  "password": process.env.DATABASE_PASSWORD,
+  "database": process.env.DATABASE_DBNAME,
   "synchronize": true,
   "logging": false,
   "entities": [
-    "src/entity/**/*.ts"
+    ".entity/**/*.js"
   ],
   "migrations": [
-    "src/migration/**/*.ts"
+    ".migration/**/*.js"
   ],
   "subscribers": [
-    "src/subscriber/**/*.ts"
+    ".subscriber/**/*.js"
   ],
   namingStrategy: new SnakeNamingStrategy()
 }

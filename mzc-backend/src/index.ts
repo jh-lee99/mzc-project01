@@ -2,7 +2,7 @@ import express from 'express';
 import {createConnection} from "typeorm";
 import router from './router';
 import {AuthMiddleware} from "./middleware/AuthMiddleware";
-import { metricsEndpoint } from './middleware/metrics';
+import { collectMetrics, metricsEndpoint } from './middleware/metrics';
 
 let app = express();
 
@@ -14,6 +14,9 @@ app.use(express.json());
 app.use(express.urlencoded({
   extended: true
 }))
+
+// 모든 요청에 대한 메트릭 수집
+app.use(collectMetrics);
 
 // 모든 http method 허용, 스트링 리턴
 app.use('/hello', (req, res) => {

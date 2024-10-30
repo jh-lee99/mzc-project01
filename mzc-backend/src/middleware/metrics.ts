@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import express from 'express';
 import client from 'prom-client';
 
 // Create a Registry which registers the metrics
@@ -30,8 +31,6 @@ const httpRequestDuration = new client.Histogram({
 // 메트릭 등록
 register.registerMetric(httpRequestCounter);
 register.registerMetric(httpRequestDuration);
-// register.registerMetric(activeUsersGauge);
-// register.registerMetric(dbConnectionPoolGauge);
 
 // 미들웨어 함수로 각 요청의 메트릭 수집
 export const collectMetrics = (req: Request, res: Response, next: NextFunction) => {
@@ -47,8 +46,23 @@ export const collectMetrics = (req: Request, res: Response, next: NextFunction) 
   next();
 };
 
+// 메트릭 서버 설정
+const metricsApp = express();
+const metricsPort = 9100;
+
 // /metrics 경로에서 Prometheus 메트릭 제공
-export const metricsEndpoint = (req: Request, res: Response) => {
+metricsApp.get('/metrics', async (req: Request, res: Response) => {
   res.setHeader('Content-Type', register.contentType);
-  register.metrics().then((metrics) => res.end(metrics));
-};
+  try {
+    const metrics = await register.metrics(); // 메트릭을 비동기로 가져옴
+    res.end(metrics); // 가져온 메트릭을 응답으로 전송
+  } catch (error) {
+    console.error('Error retrieving metrics:', error);
+    res.status(500).end('Error retrieving metrics');
+  }
+});
+
+// 메트릭 서버 리스닝
+metricsApp.listen(metricsPort, () => {
+  console.log(`Metrics server is listening ${metricsPort}`);
+});

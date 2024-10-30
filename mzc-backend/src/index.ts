@@ -2,6 +2,7 @@ import express from 'express';
 import {createConnection} from "typeorm";
 import router from './router';
 import {AuthMiddleware} from "./middleware/AuthMiddleware";
+import { metricsEndpoint } from './middleware/metrics';
 
 let app = express();
 
@@ -62,6 +63,8 @@ app.post('/hello6', (req, res) => {
   const result = req.body;
   res.send(result);
 })
+
+app.get('/metrics', metricsEndpoint);
 
 app.use('/api', router);
 

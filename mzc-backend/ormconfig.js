@@ -30,7 +30,7 @@ module.exports = {
   //     database: "boarddb"
   //   },]
   // },
-  synchronize: false,
+  synchronize: true,
   logging: false,
   namingStrategy: new SnakeNamingStrategy(),
   entities: isTS ? ["src/entity/**/*.ts"] : ["dist/entity/**/*.js"],

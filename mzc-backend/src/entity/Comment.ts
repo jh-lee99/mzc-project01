@@ -14,7 +14,7 @@ export class Comment {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column("text")
+  @Column("clob")
   content: string;
 
   @CreateDateColumn()
@@ -23,7 +23,7 @@ export class Comment {
   @UpdateDateColumn()
   updated: Date;
 
-  @ManyToOne(type => Board, board => board.comments, { onDelete: 'CASCADE', onUpdate: "CASCADE" })
+  @ManyToOne(type => Board, board => board.comments, { onDelete: 'CASCADE'})
   board: Board;
 
   @ManyToOne(type => User, user => user.comments)

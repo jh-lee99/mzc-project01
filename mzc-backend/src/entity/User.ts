@@ -14,7 +14,7 @@ import { Board } from "./Board";
 @Entity()
 @Unique(['email'])
 export class User {
-  @PrimaryGeneratedColumn({ type: "bigint" })
+  @PrimaryGeneratedColumn({ type: "number" })
   id: number;
 
   @Column({ length: 255 })

@@ -18,7 +18,7 @@ export class Board {
   @Column({ length: 100 })
   title: string;
 
-  @Column("text")
+  @Column("clob")
   content: string;
 
   @CreateDateColumn()

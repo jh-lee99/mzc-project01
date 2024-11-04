@@ -8,7 +8,7 @@ export class Image {
   @Column({ length: 100, nullable: true })
   mimetype: string;
 
-  @Column({ type: "longblob" })
+  @Column({ type: "blob" })
   data: string;
 
   @Column({ length: 100, nullable: true })
